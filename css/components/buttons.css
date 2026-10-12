@@ -1,0 +1,83 @@
+/* HackPrep Button System */
+button {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  min-height: var(--min-touch-target);
+  min-width: var(--min-touch-target);
+  padding: 0 var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  transition: all var(--transition-micro);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Primary CTA - Soft Sage / Emerald */
+.btn-primary {
+  background-color: var(--accent-sage);
+  color: #07100B;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  padding: 0 var(--space-3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #B5E4BD;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px var(--accent-sage-glow);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Secondary CTA - Outlined / Dark Surface */
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  padding: 0 var(--space-3);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--border-highlight);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.btn-secondary:active:not(:disabled) {
+  background-color: var(--bg-card);
+}
+
+/* Circle Icon Button */
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-micro);
+}
+
+.btn-circle:hover {
+  border-color: var(--accent-sage);
+  color: var(--accent-sage);
+  background-color: var(--bg-card-hover);
+}

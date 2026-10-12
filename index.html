@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HackPrep — Build Smarter, Collaborate Better, Win Hackathons</title>
-  <meta name="description" content="Discover winning project ideas, generate structured technical blueprints, find curated developer resources, and build balanced hackathon teams.">
+  <title>HackPrep — From an idea to a winning project</title>
+  <meta name="description" content="HackPrep helps you discover hackathon ideas, create structured plans, find the right teammates, and access curated resources — all in one place.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
     <nav class="navbar" aria-label="Primary Navigation">
       <div class="container navbar-container">
         <a href="#hero" class="navbar-brand" id="brandLogo">
-          <span class="brand-icon">⚡</span>
+          <span class="brand-sparkle">✦</span>
           <span>HackPrep</span>
         </a>
 
@@ -26,11 +26,18 @@
           <li><a href="#resources" class="nav-link" id="navResources">Resources</a></li>
           <li><a href="#teams" class="nav-link" id="navTeams">Teams</a></li>
           <li><a href="#how-it-works" class="nav-link" id="navHowItWorks">How It Works</a></li>
+          <li><a href="#pricing" class="nav-link" id="navPricing">Pricing</a></li>
         </ul>
 
         <div class="navbar-actions">
+          <button class="navbar-search-btn" id="navbarSearchBtn" aria-label="Search resources and projects">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
           <div id="navbarAuthAction">
-            <!-- Dynamic Login & Get Started Buttons -->
+            <!-- Dynamic Login & Get Started Buttons populated by navbar.js -->
           </div>
           <button class="navbar-toggle" id="navbarToggleBtn" aria-label="Toggle Navigation Menu">
             ☰
@@ -43,169 +50,277 @@
   <main>
     <!-- Hero Section -->
     <section id="hero" class="hero">
+      <div class="hero-glow-bg"></div>
       <div class="container hero-grid">
-        <div>
-          <span class="hero-eyebrow">IDEA. PLAN. BUILD. SHIP.</span>
-          <h1 class="hero-heading">Your next big idea starts here.</h1>
-          <p class="hero-description">
-            HackPrep empowers developers to discover impactful hackathon ideas, synthesize production-ready blueprints, access battle-tested APIs, and team up with fellow hackers.
+        <div class="hero-content">
+          <div class="hero-eyebrow-pill animate-hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            <span>BUILD. LEARN. COLLABORATE.</span>
+          </div>
+
+          <h1 class="hero-heading animate-hero-title">
+            From an idea<br>to a winning project.
+          </h1>
+
+          <p class="hero-description animate-hero-desc">
+            HackPrep helps you discover hackathon ideas, create structured plans, find the right teammates, and access curated resources — all in one place.
           </p>
-          <div class="hero-cta-group">
+
+          <div class="hero-cta-group animate-hero-cta">
             <a href="#projects" class="btn-primary" id="heroExploreBtn">Explore Projects →</a>
-            <a href="#builder" class="btn-secondary" id="heroBuildBtn">Build Your Idea</a>
-          </div>
-        </div>
-
-        <!-- Live Product Blueprint Preview -->
-        <div class="blueprint-preview-card" id="heroBlueprintPreview" aria-label="Live Project Blueprint Preview">
-          <div class="preview-top-bar">
-            <div>
-              <span class="badge badge-green" style="margin-bottom: 4px;">BLUEPRINT PREVIEW</span>
-              <h3 id="heroPreviewTitle" style="font-size: 16px;">MediConnect Telemedicine Dispatch</h3>
-              <span id="heroPreviewMeta" style="font-size: 13px; color: var(--text-muted);">Healthcare • 36h Sprint</span>
-            </div>
-            <div class="preview-pill-nav">
-              <button class="preview-tab is-active" data-domain="healthcare">Health</button>
-              <button class="preview-tab" data-domain="climate">Climate</button>
-              <button class="preview-tab" data-domain="fintech">FinTech</button>
-            </div>
+            <button class="btn-secondary" id="heroWatchDemoBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Watch Demo
+            </button>
           </div>
 
-          <div class="preview-spec-box">
-            <span class="preview-spec-label">TARGET ARCHITECTURE</span>
-            <div class="preview-spec-value" id="heroPreviewArch">
-              WebRTC P2P &lt;-&gt; FastAPI Signaling Server &lt;-&gt; Postgres Event Log
+          <!-- Hero Metrics / Stats Row -->
+          <div class="hero-stats-row animate-hero-stats">
+            <div class="hero-stat-item">
+              <span class="hero-stat-value">10K+</span>
+              <span class="hero-stat-label">Student Builders</span>
             </div>
-          </div>
-
-          <div>
-            <span class="preview-spec-label">RECOMMENDED STACK</span>
-            <div class="badge-group" id="heroPreviewStack">
-              <!-- Rendered dynamically -->
+            <div class="hero-stat-item">
+              <span class="hero-stat-value">2.5K+</span>
+              <span class="hero-stat-label">Project Ideas</span>
             </div>
-          </div>
-
-          <div>
-            <span class="preview-spec-label">SPRINT MILESTONES</span>
-            <div class="preview-timeline" id="heroPreviewTimeline">
-              <!-- Rendered dynamically -->
+            <div class="hero-stat-item">
+              <span class="hero-stat-value">500+</span>
+              <span class="hero-stat-label">Active Teams</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-value">50+</span>
+              <span class="hero-stat-label">Curated Resources</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">01 / WORKFLOW</span>
-          <h2 class="section-title">How HackPrep Works</h2>
-          <p class="section-desc">From initial brainstorm to final demo, follow a proven 4-stage roadmap tailored for fast-paced hackathons.</p>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <span class="step-num">01</span>
-            <h3 class="step-title">Discover an Idea</h3>
-            <p>Browse curated real-world problem statements across AI, FinTech, Healthcare, and Climate to find what excites you.</p>
+        <!-- Realistic Product Blueprint Preview Mockup -->
+        <div class="mockup-wrapper animate-hero-preview">
+          <!-- Cursive script floating note -->
+          <div class="mockup-handwritten-note">
+            Ideas<br>Plans<br>Teams<br>Real Projects
           </div>
-          <div class="step-card">
-            <span class="step-num">02</span>
-            <h3 class="step-title">Create a Blueprint</h3>
-            <p>Generate an actionable technical architecture, milestone schedule, and stack recommendations within minutes.</p>
+
+          <!-- Top-Right Floating Pill Badge -->
+          <div class="mockup-floating-badge badge-top-right">
+            <span style="color: var(--accent-sage);">✦</span>
+            <span>Get AI-powered guidance for your ideas.</span>
           </div>
-          <div class="step-card">
-            <span class="step-num">03</span>
-            <h3 class="step-title">Find Resources &amp; Teammates</h3>
-            <p>Discover free-tier developer APIs, boilerplates, and connect with frontend, backend, or design collaborators.</p>
-          </div>
-          <div class="step-card">
-            <span class="step-num">04</span>
-            <h3 class="step-title">Build &amp; Track Progress</h3>
-            <p>Keep your team synchronized on milestones and requirements so you ship a working demo before time runs out.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Project Discovery Section -->
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">02 / DISCOVERY</span>
-          <h2 class="section-title">Explore Hackathon Projects</h2>
-          <p class="section-desc">Sample architectures and project blueprints ready for exploration and implementation.</p>
-        </div>
-
-        <div class="card-grid" id="blueprintsGrid">
-          <!-- Populated dynamically with sample project listings -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Core Features Section -->
-    <section id="features" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">03 / CAPABILITIES</span>
-          <h2 class="section-title">Core Platform Features</h2>
-          <p class="section-desc">Everything engineering teams need to streamline the hackathon journey into one cohesive workspace.</p>
-        </div>
-
-        <div class="features-container">
-          <!-- Spotlight: Project Builder -->
-          <div class="feature-spotlight">
-            <div>
-              <span class="feature-badge">FEATURE SPOTLIGHT</span>
-              <h3 style="font-size: 20px; margin-bottom: 8px;">Intelligent Project Builder</h3>
-              <p style="margin-bottom: 16px;">
-                Stop debating architecture during valuable hackathon hours. Enter your problem statement and duration to synthesize complete execution blueprints with system diagrams, recommended stacks, and hourly checkpoints.
-              </p>
-              <a href="#builder" class="btn-primary" style="display: inline-flex;">Try Project Builder →</a>
-            </div>
-            <div style="background-color: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: var(--space-3);">
-              <span style="font-family: var(--font-family-mono); font-size: 12px; color: var(--accent-green); display: block; margin-bottom: 8px;">OUTPUT BLUEPRINT INCLUDES</span>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--text-muted);">
-                <li>✓ System Architecture &amp; Data Flow</li>
-                <li>✓ Recommended Technology Stack</li>
-                <li>✓ 4-Phase Hourly Sprint Roadmap</li>
-                <li>✓ Pitch &amp; Demo Verification Checklist</li>
+          <!-- Main Blueprint Studio Window -->
+          <div class="mockup-window" id="heroMockupCard">
+            <!-- Mini Sidebar -->
+            <aside class="mockup-sidebar" aria-label="Mockup navigation">
+              <div class="mockup-brand">
+                <span style="color: var(--accent-sage);">✦</span>
+                <span>HackPrep</span>
+              </div>
+              <ul class="mockup-nav">
+                <li class="mockup-nav-item is-active">
+                  <span>▣</span> Overview
+                </li>
+                <li class="mockup-nav-item">
+                  <span>✎</span> Project Builder
+                </li>
+                <li class="mockup-nav-item">
+                  <span>◧</span> My Projects
+                </li>
+                <li class="mockup-nav-item">
+                  <span>◫</span> Resources
+                </li>
+                <li class="mockup-nav-item">
+                  <span>👥</span> Teams
+                </li>
+                <li class="mockup-nav-item">
+                  <span>⊞</span> Dashboard
+                </li>
               </ul>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="mockup-content">
+              <h3 class="mockup-header-title">Project Blueprint</h3>
+
+              <div class="mockup-stepper">
+                <span class="step-indicator active">
+                  <span class="step-circle">1</span> Idea
+                </span>
+                <span style="color: var(--border-subtle);">──</span>
+                <span class="step-indicator">
+                  <span class="step-circle">2</span> Analysis
+                </span>
+                <span style="color: var(--border-subtle);">──</span>
+                <span class="step-indicator">
+                  <span class="step-circle">3</span> Blueprint
+                </span>
+              </div>
+
+              <div class="mockup-body-grid">
+                <!-- Form Inputs -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <div class="mockup-field-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span class="mockup-label">Your Idea</span>
+                      <span id="heroMockupCounter" style="font-size: 10px; color: var(--text-dim);">0/500</span>
+                    </div>
+                    <textarea class="mockup-textarea" id="heroMockupTextarea" placeholder="Describe your hackathon idea..."></textarea>
+                  </div>
+
+                  <div class="mockup-field-group">
+                    <span class="mockup-label">Target Domain</span>
+                    <select class="mockup-select" aria-label="Target domain selection">
+                      <option>Select domain ⌵</option>
+                      <option>Environment & Climate</option>
+                      <option>Education & Learning</option>
+                      <option>Healthcare & Telemedicine</option>
+                      <option>FinTech & Analytics</option>
+                    </select>
+                  </div>
+
+                  <div class="mockup-field-group">
+                    <span class="mockup-label">Difficulty Level</span>
+                    <div class="mockup-pills">
+                      <button class="mockup-pill-btn" type="button">Beginner</button>
+                      <button class="mockup-pill-btn is-active" type="button">Intermediate</button>
+                      <button class="mockup-pill-btn" type="button">Advanced</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- AI Analysis Card -->
+                <div class="mockup-ai-card">
+                  <div>
+                    <span class="mockup-ai-header">AI Analysis</span>
+                    <ul class="mockup-ai-list" style="margin-top: 8px;">
+                      <li class="mockup-ai-item">
+                        <span class="dot">●</span> Feasibility Analysis
+                      </li>
+                      <li class="mockup-ai-item">
+                        <span class="dot">●</span> Tech Stack Recommendation
+                      </li>
+                      <li class="mockup-ai-item">
+                        <span class="dot">●</span> Potential Impact
+                      </li>
+                      <li class="mockup-ai-item">
+                        <span class="dot">●</span> Time Estimation
+                      </li>
+                    </ul>
+                  </div>
+
+                  <button class="mockup-gen-btn" id="heroMockupGenBtn" type="button">
+                    Generate Blueprint →
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Feature Grid: 4 Supporting Modules -->
-          <div class="features-subgrid">
-            <div class="feature-item">
-              <span class="feature-badge">RESOURCES</span>
-              <h3 class="step-title">Resource Hub</h3>
-              <p>Curated free developer APIs, datasets, and framework starter kits verified for hackathon use.</p>
+          <!-- Bottom-Right Floating Pill Badge -->
+          <div class="mockup-floating-badge badge-bottom-right">
+            <span>📄</span>
+            <span>Turn ideas into structured blueprints.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Project Ideas Section -->
+    <section id="projects" class="section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header-row">
+          <div class="section-header">
+            <span class="section-tag">
+              <span style="color: var(--accent-sage);">✦</span> EXPLORE
+            </span>
+            <h2 class="section-title">Popular Project Ideas</h2>
+            <p class="section-desc">Browse real-world inspired project concepts across different domains.</p>
+          </div>
+          <a href="#builder" class="section-action-link" id="viewAllProjectsBtn">
+            View All Projects →
+          </a>
+        </div>
+
+        <!-- Domain Filter Pills -->
+        <div class="project-filter-row" id="projectFilters" role="tablist" aria-label="Project domains">
+          <!-- Populated dynamically by project-directory.js -->
+        </div>
+
+        <!-- 4-Card Responsive Grid -->
+        <div class="popular-cards-grid" id="popularCardsGrid" aria-live="polite">
+          <!-- Populated dynamically with GreenTrack, EduTrack, MediConnect, FinMate -->
+        </div>
+      </div>
+    </section>
+
+    <!-- How HackPrep Works Section -->
+    <section id="how-it-works" class="section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <span style="color: var(--accent-sage);">✦</span> HOW IT WORKS
+          </span>
+          <h2 class="section-title">A simple path to hackathon success.</h2>
+          <p class="section-desc">Go from an idea to a ready-to-build project with clear guidance and the right resources.</p>
+        </div>
+
+        <div class="workflow-timeline">
+          <!-- Step 1: Discover -->
+          <div class="workflow-step">
+            <div class="workflow-icon-badge" aria-label="Step 1 Discover">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                <path d="M9 18h6"/>
+                <path d="M10 22h4"/>
+              </svg>
             </div>
-            <div class="feature-item">
-              <span class="feature-badge">COLLABORATION</span>
-              <h3 class="step-title">Team Collaboration</h3>
-              <p>Find developers and designers with balanced skills to complete your squad.</p>
-              <button class="btn-secondary" data-notice-feature="Team Collaboration" style="margin-top: 8px; align-self: flex-start; min-height: 36px;">
-                Learn More
-              </button>
+            <h3 class="workflow-step-title">Discover</h3>
+            <p class="workflow-step-desc">Explore project ideas or bring your own concept.</p>
+          </div>
+
+          <!-- Step 2: Plan -->
+          <div class="workflow-step">
+            <div class="workflow-icon-badge" aria-label="Step 2 Plan">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
             </div>
-            <div class="feature-item">
-              <span class="feature-badge">WORKSPACE</span>
-              <h3 class="step-title">Project Workspace</h3>
-              <p>Organize blueprints, track submission requirements, and centralize shared team links.</p>
-              <button class="btn-secondary" data-notice-feature="Project Workspace" style="margin-top: 8px; align-self: flex-start; min-height: 36px;">
-                Learn More
-              </button>
+            <h3 class="workflow-step-title">Plan</h3>
+            <p class="workflow-step-desc">Get AI-powered analysis and a structured blueprint.</p>
+          </div>
+
+          <!-- Step 3: Collaborate -->
+          <div class="workflow-step">
+            <div class="workflow-icon-badge" aria-label="Step 3 Collaborate">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
             </div>
-            <div class="feature-item">
-              <span class="feature-badge">EXECUTION</span>
-              <h3 class="step-title">Progress Tracking</h3>
-              <p>Live countdown timers, milestone checklists, and automated demo submission guides.</p>
-              <button class="btn-secondary" data-notice-feature="Progress Tracking" style="margin-top: 8px; align-self: flex-start; min-height: 36px;">
-                Learn More
-              </button>
+            <h3 class="workflow-step-title">Collaborate</h3>
+            <p class="workflow-step-desc">Find teammates and access curated learning resources.</p>
+          </div>
+
+          <!-- Step 4: Build & Track -->
+          <div class="workflow-step">
+            <div class="workflow-icon-badge" aria-label="Step 4 Build and Track">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+              </svg>
             </div>
+            <h3 class="workflow-step-title">Build &amp; Track</h3>
+            <p class="workflow-step-desc">Organize tasks, set milestones and bring your idea to life.</p>
           </div>
         </div>
       </div>
@@ -310,7 +425,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <a href="#hero" class="navbar-brand" style="margin-bottom: 12px;">
-            <span class="brand-icon">⚡</span>
+            <span class="brand-sparkle">✦</span>
             <span>HackPrep</span>
           </a>
           <p style="max-width: 280px; line-height: 1.6;">

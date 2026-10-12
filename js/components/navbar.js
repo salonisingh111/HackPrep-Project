@@ -4,8 +4,9 @@ export function initNavbar(onOpenAuth, onOpenNotice) {
   const container = document.getElementById("navbarAuthAction");
   const navList = document.getElementById("navbarList");
   const toggleBtn = document.getElementById("navbarToggleBtn");
+  const searchBtn = document.getElementById("navbarSearchBtn");
 
-  // Mobile menu toggle
+  // Mobile drawer toggle
   if (toggleBtn && navList) {
     toggleBtn.addEventListener("click", () => {
       navList.classList.toggle("is-open");
@@ -14,17 +15,40 @@ export function initNavbar(onOpenAuth, onOpenNotice) {
     navList.querySelectorAll(".nav-link").forEach(link => {
       link.addEventListener("click", () => {
         navList.classList.remove("is-open");
+        navList.querySelectorAll(".nav-link").forEach(l => l.classList.remove("is-active"));
+        link.classList.add("is-active");
       });
     });
   }
 
-  // Handle "Teams" in-progress notice
+  // Quick search button
+  if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+      const searchInput = document.getElementById("resourceSearchInput");
+      if (searchInput) {
+        searchInput.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => searchInput.focus(), 300);
+      }
+    });
+  }
+
+  // Handle in-progress navigation items
   const teamsLink = document.getElementById("navTeams");
   if (teamsLink) {
     teamsLink.addEventListener("click", (e) => {
       if (typeof onOpenNotice === "function") {
         e.preventDefault();
         onOpenNotice("Team Hub", "Team matchmaking and hacker roster formation is scheduled for the upcoming sprint. Stay tuned for early access!");
+      }
+    });
+  }
+
+  const pricingLink = document.getElementById("navPricing");
+  if (pricingLink) {
+    pricingLink.addEventListener("click", (e) => {
+      if (typeof onOpenNotice === "function") {
+        e.preventDefault();
+        onOpenNotice("Pricing Plans", "HackPrep is currently 100% free for educational and hackathon participants!");
       }
     });
   }
@@ -46,8 +70,8 @@ export function initNavbar(onOpenAuth, onOpenNotice) {
     } else {
       container.innerHTML = `
         <button id="navLoginBtn" class="btn-nav-login" style="cursor: pointer;">Log In</button>
-        <button id="navGetStartedBtn" class="btn-primary" style="min-height: 38px; padding: 0 16px;">
-          Get Started
+        <button id="navGetStartedBtn" class="btn-primary" style="min-height: 40px; padding: 0 18px;">
+          Get Started →
         </button>
       `;
       const loginBtn = document.getElementById("navLoginBtn");

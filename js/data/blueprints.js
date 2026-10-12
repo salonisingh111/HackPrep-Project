@@ -1,66 +1,82 @@
 export const INITIAL_BLUEPRINTS = [
   {
-    id: "mediconnect",
-    title: "MediConnect",
-    domain: "Healthcare",
-    difficulty: "Intermediate",
-    summary: "Decentralized emergency telemedicine dispatch and patient record exchange.",
-    stack: ["WebRTC", "FastAPI", "Tailwind", "PostgreSQL"],
-    timeline: "36 Hours",
-    architecture: "Client WebRTC <-> Signaling Server <-> PostgreSQL Event Store",
+    id: "greentrack",
+    title: "GreenTrack",
+    domain: "Environment",
+    tags: ["Environment", "Python", "All"],
+    difficulty: "Beginner",
+    summary: "Track and reduce campus carbon footprint with smart habit tracking.",
+    teamSize: "3–4",
+    timeline: "3–4 weeks",
+    techPrimary: "Python",
+    stack: ["Python", "Flask", "SQLite", "Chart.js"],
+    iconType: "environment",
+    architecture: "Client Web App <-> Python Flask API <-> Impact Engine & SQLite",
     milestones: [
-      "Hour 0-8: Signaling server & schema",
-      "Hour 8-20: Peer video audio channels",
-      "Hour 20-30: Patient triage dashboard",
-      "Hour 30-36: Demo deployment & pitch"
+      "Phase 1: Carbon telemetry models & habit schema",
+      "Phase 2: Activity logging endpoints & campus leaderboards",
+      "Phase 3: Real-time reduction analytics dashboard",
+      "Phase 4: Smoke testing & demo showcase"
     ]
   },
   {
     id: "edutrack",
     title: "EduTrack",
     domain: "Education",
-    difficulty: "Beginner",
-    summary: "Gamified hackathon peer learning tracker with automated repo verification.",
-    stack: ["JavaScript", "HTML5", "Node.js", "SQLite"],
-    timeline: "24 Hours",
-    architecture: "Static UI <-> Node API <-> SQLite DB & GitHub Webhooks",
+    tags: ["Education", "Web Development", "All"],
+    difficulty: "Intermediate",
+    summary: "Gamified learning platform for automated study planning.",
+    teamSize: "3–5",
+    timeline: "4–6 weeks",
+    techPrimary: "Web App",
+    stack: ["JavaScript", "React", "Node.js", "PostgreSQL"],
+    iconType: "education",
+    architecture: "Modern Web UI <-> Node API <-> Gamified Planning Engine",
     milestones: [
-      "Hour 0-6: UI mockup & schema design",
-      "Hour 6-14: Progress logging endpoints",
-      "Hour 14-20: Streak visualization widget",
-      "Hour 20-24: QA testing & live demo"
+      "Phase 1: Syllabus parser & adaptive scheduling schema",
+      "Phase 2: Streak endpoints & reward badge microservices",
+      "Phase 3: Interactive study session planner UI",
+      "Phase 4: QA testing & live demo recording"
     ]
   },
   {
-    id: "greenbuddy",
-    title: "GreenBuddy",
-    domain: "Climate",
+    id: "mediconnect",
+    title: "MediConnect",
+    domain: "HealthTech",
+    tags: ["HealthTech", "AI/ML", "All"],
     difficulty: "Intermediate",
-    summary: "Carbon footprint calculator for software engineers with CI/CD action plug-in.",
-    stack: ["Python", "Docker", "Next.js", "Redis"],
-    timeline: "48 Hours",
-    architecture: "GitHub Action <-> Python Metrics Engine <-> Redis Cache <-> Next UI",
+    summary: "Decentralized emergency telemedicine dispatch and patient record exchange.",
+    teamSize: "4–5",
+    timeline: "4–6 weeks",
+    techPrimary: "WebRTC",
+    stack: ["WebRTC", "FastAPI", "Tailwind", "PostgreSQL"],
+    iconType: "health",
+    architecture: "WebRTC P2P <-> FastAPI Signaling Server <-> Postgres Event Log",
     milestones: [
-      "Hour 0-12: Carbon estimation formulas",
-      "Hour 12-24: GitHub Action runner",
-      "Hour 24-38: Comparison leaderboard UI",
-      "Hour 38-48: Final stress tests & docs"
+      "Phase 1: Signaling server & dispatch schema setup",
+      "Phase 2: Encrypted peer audio/video triage channels",
+      "Phase 3: Patient vitals record exchange module",
+      "Phase 4: Live dispatch stress tests & presentation"
     ]
   },
   {
     id: "finmate",
     title: "FinMate",
     domain: "FinTech",
+    tags: ["FinTech", "Social Impact", "All"],
     difficulty: "Advanced",
-    summary: "Real-time algorithmic micro-budgeting platform with fraud anomaly detection.",
+    summary: "Real-time micro-budgeting platform with fraud anomaly detection.",
+    teamSize: "3–5",
+    timeline: "6–8 weeks",
+    techPrimary: "Go",
     stack: ["TypeScript", "Go", "Kafka", "PostgreSQL"],
-    timeline: "48 Hours",
-    architecture: "Event Bus (Kafka) <-> Go Analytics Worker <-> TypeScript Dashboard",
+    iconType: "fintech",
+    architecture: "Kafka Stream <-> Go Analytics Worker <-> TypeScript Dashboard",
     milestones: [
-      "Hour 0-10: Synthetic transaction generator",
-      "Hour 10-24: Anomaly scoring pipeline",
-      "Hour 24-36: Real-time SSE alert dashboard",
-      "Hour 36-48: Resilience checks & pitch prep"
+      "Phase 1: Synthetic transaction feed generator",
+      "Phase 2: Anomaly scoring pipeline in Go",
+      "Phase 3: Real-time SSE alert dashboard",
+      "Phase 4: Resilience checks & live pitch deck"
     ]
   }
 ];
@@ -77,16 +93,20 @@ export function generateCustomBlueprint(input) {
     id: "custom-" + Date.now(),
     title: input.idea.slice(0, 28) + (input.idea.length > 28 ? "..." : ""),
     domain: domain,
+    tags: [domain, "All"],
     difficulty: "Custom",
     summary: input.idea,
-    stack: [domain.split(" ")[0] || "JavaScript", "Python", "REST API", "LocalStorage"],
+    teamSize: "3–4",
     timeline: duration,
-    architecture: `Client Interface <-> Lightweight API Handler <-> Persistent Store`,
+    techPrimary: domain.split(" ")[0] || "JavaScript",
+    stack: [domain.split(" ")[0] || "JavaScript", "Python", "REST API", "LocalStorage"],
+    iconType: "environment",
+    architecture: "Client Interface <-> Lightweight API Handler <-> Persistent Store",
     milestones: [
-      "Phase 1: Project setup, schema definition & Git branch baseline",
-      "Phase 2: Core functional engine implementation & state management",
+      "Phase 1: Project setup, schema definition & Git baseline",
+      "Phase 2: Core functional engine implementation & state logic",
       "Phase 3: Real-time UI integration & interactive polish",
-      "Phase 4: Smoke testing, responsive check & submission demo video"
+      "Phase 4: Smoke testing, responsive check & submission demo"
     ]
   };
 

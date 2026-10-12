@@ -1,14 +1,16 @@
+/* HackPrep Refined Navbar */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(8, 13, 11, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(8, 13, 11, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-subtle);
-  height: 72px;
+  height: 76px;
   display: flex;
   align-items: center;
+  transition: border-color var(--transition-micro), background-color var(--transition-micro);
 }
 
 .navbar-container {
@@ -16,7 +18,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .navbar-brand {
@@ -24,50 +26,52 @@
   align-items: center;
   gap: 10px;
   font-family: var(--font-family-sans);
-  font-weight: 700;
-  font-size: var(--font-size-md);
+  font-weight: 600;
+  font-size: 19px;
   color: var(--text-primary);
   text-decoration: none;
   letter-spacing: -0.01em;
 }
 
-.brand-icon {
-  width: 24px;
-  height: 24px;
-  background: linear-gradient(135deg, var(--accent-green) 0%, #00B359 100%);
-  border-radius: 6px;
+.brand-sparkle {
+  color: var(--accent-sage);
+  font-size: 20px;
+  line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #080D0B;
-  font-weight: 800;
-  font-size: 13px;
+  filter: drop-shadow(0 0 6px var(--accent-sage-glow));
 }
 
 .navbar-nav {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 4px;
+  gap: 8px;
 }
 
 .nav-link {
   display: inline-flex;
   align-items: center;
-  min-height: var(--min-touch-target);
-  padding: 0 12px;
+  min-height: 38px;
+  padding: 0 14px;
   color: var(--text-muted);
   font-family: var(--font-family-sans);
   font-size: var(--font-size-sm);
   font-weight: 500;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   transition: color var(--transition-micro), background-color var(--transition-micro);
 }
 
-.nav-link:hover, .nav-link.is-active {
+.nav-link:hover {
   color: var(--text-primary);
   background-color: var(--bg-surface);
-  text-decoration: none;
+}
+
+.nav-link.is-active {
+  color: var(--text-primary);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
 }
 
 .navbar-actions {
@@ -76,57 +80,83 @@
   gap: var(--space-2);
 }
 
-.btn-nav-login {
+.navbar-search-btn {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
   color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-micro);
+}
+
+.navbar-search-btn:hover {
+  border-color: var(--border-highlight);
+  color: var(--text-primary);
+  background-color: var(--bg-surface);
+}
+
+.btn-nav-login {
+  color: var(--text-primary);
   background: transparent;
   border: none;
   font-weight: 500;
-  min-height: var(--min-touch-target);
-  padding: 0 12px;
+  min-height: 38px;
+  padding: 0 14px;
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-full);
 }
 
 .btn-nav-login:hover {
-  color: var(--text-primary);
+  color: var(--accent-sage);
 }
 
 .navbar-toggle {
   display: none;
-  background: transparent;
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  min-width: var(--min-touch-target);
-  min-height: var(--min-touch-target);
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   border-radius: var(--radius-sm);
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
 
-@media (max-width: 960px) {
-  .navbar-toggle {
-    display: inline-flex;
-  }
-
+@media (max-width: 992px) {
   .navbar-nav {
     display: none;
     position: absolute;
-    top: 72px;
+    top: 76px;
     left: 0;
     right: 0;
-    background-color: var(--bg-surface);
+    background-color: var(--bg-card);
     border-bottom: 1px solid var(--border-subtle);
     flex-direction: column;
-    padding: var(--space-2);
-    gap: 4px;
+    padding: var(--space-3) var(--space-4);
+    gap: 6px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
   }
 
   .navbar-nav.is-open {
     display: flex;
   }
 
-  .nav-link {
+  .navbar-nav .nav-link {
     width: 100%;
-    padding: 10px 16px;
+    justify-content: flex-start;
   }
 
-  .navbar-actions .btn-nav-login {
-    display: none;
+  .navbar-toggle {
+    display: inline-flex;
   }
 }

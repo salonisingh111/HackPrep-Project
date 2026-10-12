@@ -6,6 +6,7 @@ import { initResourceExplorer } from "./components/resource-explorer.js";
 import { initProjectDirectory } from "./components/project-directory.js";
 import { initBlueprintDetailModal } from "./components/blueprint-detail-modal.js";
 import { initInfoModal } from "./components/info-modal.js";
+import { initScrollAnimations } from "./components/scroll-animations.js";
 
 function bootstrap() {
   const authModal = initAuthModal("authModal");
@@ -25,17 +26,33 @@ function bootstrap() {
   };
 
   initNavbar(handleOpenAuth, handleOpenNotice);
-  initHeroPreview("heroBlueprintPreview");
+  initHeroPreview("heroMockupCard");
+  initProjectDirectory("popularCardsGrid", "projectFilters", handleInspect);
   initBlueprintBuilder("builderForm", "builderResultBox", handleOpenAuth);
-  initProjectDirectory("blueprintsGrid", handleInspect);
   initResourceExplorer("resourceSearchInput", "resourceCategories", "resourcesGrid");
+  initScrollAnimations();
 
-  // Wire Teams / Workspace in-progress buttons if present
+  // "Watch Demo" CTA button
+  const watchDemoBtn = document.getElementById("heroWatchDemoBtn");
+  if (watchDemoBtn) {
+    watchDemoBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      handleOpenNotice(
+        "HackPrep Platform Demo",
+        "Welcome to HackPrep! Here is how it works: (1) Discover curated real-world problem statements, (2) Generate a custom architectural blueprint with recommended tech stacks, (3) Access verified free APIs and starter kits, and (4) Form balanced hackathon teams. Try the interactive Project Builder below to get started!"
+      );
+    });
+  }
+
+  // Feature notice triggers for uncompleted sprint features
   document.querySelectorAll("[data-notice-feature]").forEach(btn => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       const featName = btn.dataset.noticeFeature || "Feature";
-      handleOpenNotice(featName, `${featName} is scheduled for development in the upcoming sprint. Reserve early access today!`);
+      handleOpenNotice(
+        featName,
+        `${featName} is scheduled for development in the upcoming sprint. Reserve early access today!`
+      );
     });
   });
 }
