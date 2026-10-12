@@ -1,14 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=Home/home.html">
-    <title>HackPrep Redirect</title>
-    <script>
-        window.location.href = "Home/home.html";
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HackPrep — Developer Platform for Hackathon Engineering &amp; Blueprints</title>
+  <meta name="description" content="Developer-focused hackathon platform. Generate system blueprints, discover curated APIs and resources, and plan hackathon architectures with electric speed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <p>Redirecting to <a href="Home/home.html">HackPrep Home</a>...</p>
+  <!-- Top Horizontal Navigation -->
+  <header>
+    <nav class="navbar" aria-label="Main Navigation">
+      <div class="container navbar-container">
+        <a href="#hero" class="navbar-brand" id="brandLogo">
+          <span class="brand-dot"></span>
+          <span>HackPrep</span>
+        </a>
+
+        <ul class="navbar-nav">
+          <li><a href="#hero" class="nav-link is-active" id="navHome">Overview</a></li>
+          <li><a href="#builder" class="nav-link" id="navBuilder">AI Studio</a></li>
+          <li><a href="#blueprints" class="nav-link" id="navProjects">Blueprints</a></li>
+          <li><a href="#resources" class="nav-link" id="navResources">Resources</a></li>
+        </ul>
+
+        <div class="navbar-actions" id="navbarAuthAction">
+          <!-- Auth action populated dynamically -->
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Developer Hero Section -->
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-tag">
+            <span>●</span>
+            <span>HackPrep Engine v2.0 • Active</span>
+          </div>
+          <h1 class="hero-heading">
+            Ship Hackathon Projects <br>
+            <span class="highlight">From Concept to Code</span>
+          </h1>
+          <p class="hero-description">
+            The developer workspace for hackathons. Synthesize production-ready blueprints, discover battle-tested APIs, and organize sprint architectures before the opening buzzer.
+          </p>
+          <div class="hero-actions">
+            <a href="#builder" class="btn-primary" id="heroStartBtn">Launch Blueprint Studio →</a>
+            <a href="#blueprints" class="btn-secondary" id="heroExploreBtn">Explore Blueprints</a>
+          </div>
+        </div>
+
+        <!-- Animated Developer Terminal -->
+        <div class="terminal-card" aria-label="Live System Terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+            </div>
+            <span class="terminal-title">bash — hackprep-cli</span>
+            <span></span>
+          </div>
+          <div class="terminal-body" id="heroTerminalBody">
+            <!-- Terminal sequence rendered dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive AI Blueprint Studio -->
+    <section id="builder" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// 01 ARCHITECTURE STUDIO</span>
+          <h2 class="section-title">Interactive Blueprint Studio</h2>
+          <p class="section-desc">Generate real execution blueprints with custom architecture patterns and sprint milestones.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-4);">
+          <!-- Input Form -->
+          <form id="builderForm" class="card">
+            <div class="form-group">
+              <label for="builderIdea" class="form-label">Project Concept / Problem Statement</label>
+              <textarea id="builderIdea" class="form-textarea" placeholder="e.g. AI-driven disaster triage platform dispatching autonomous drone reconnaissance..." required></textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2);">
+              <div class="form-group">
+                <label for="builderDomain" class="form-label">Domain</label>
+                <select id="builderDomain" class="form-select">
+                  <option value="AI &amp; Web">AI &amp; Web</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="FinTech">FinTech</option>
+                  <option value="Climate">Climate</option>
+                  <option value="DevTools">DevTools</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="builderDuration" class="form-label">Hackathon Duration</label>
+                <select id="builderDuration" class="form-select">
+                  <option value="24 Hours">24 Hours</option>
+                  <option value="36 Hours" selected>36 Hours</option>
+                  <option value="48 Hours">48 Hours</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="builderSubmitBtn" style="margin-top: var(--space-1);">
+              Compile System Blueprint ⚡
+            </button>
+          </form>
+
+          <!-- Result Area -->
+          <div id="builderResultBox">
+            <div class="state-box">
+              <span style="font-family: var(--font-family-mono); color: var(--accent-green); font-size: 18px;">[READY]</span>
+              <p>Enter your project concept to generate an actionable architecture blueprint, recommended stack, and hourly milestones.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Public Blueprint Directory -->
+    <section id="blueprints" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// 02 PUBLIC DISCOVERY</span>
+          <h2 class="section-title">Battle-Tested Hackathon Blueprints</h2>
+          <p class="section-desc">Inspect architectures and stack decisions from top hackathon concepts.</p>
+        </div>
+
+        <div class="card-grid" id="blueprintsGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Curated Dev Resources Explorer -->
+    <section id="resources" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// 03 CURATED RESOURCES</span>
+          <h2 class="section-title">Developer Resource Hub</h2>
+          <p class="section-desc">Searchable collection of free-tier APIs, frameworks, starter templates, and tools.</p>
+        </div>
+
+        <div class="section-controls">
+          <div class="filter-group" id="resourceCategories">
+            <!-- Filter buttons populated dynamically -->
+          </div>
+          <input type="search" id="resourceSearchInput" class="form-input search-input" placeholder="Search APIs, datasets, tools...">
+        </div>
+
+        <div class="card-grid" id="resourcesGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <a href="#hero" class="navbar-brand" style="margin-bottom: 8px;">
+          <span class="brand-dot"></span>
+          <span>HackPrep</span>
+        </a>
+        <p>Built for hackers, developers, and engineering sprint teams.</p>
+      </div>
+      <div>
+        <p style="font-family: var(--font-family-mono);">© 2026 HackPrep Project • MIT Open Engineering</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Developer Auth Modal -->
+  <div class="modal-backdrop" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h2 class="modal-title" id="authTitle">Developer Authentication</h2>
+        <button class="modal-close-btn" aria-label="Close dialog">✕</button>
+      </div>
+      <form id="authForm">
+        <div class="form-group">
+          <label for="authUsername" class="form-label">Developer Handle / GitHub Username</label>
+          <input type="text" id="authUsername" class="form-input" placeholder="octocat" required>
+        </div>
+        <div class="form-feedback" id="authFeedback"></div>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: var(--space-2);">
+          Connect Workspace Session
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Blueprint Inspection Modal -->
+  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalDetailTitle">
+    <div class="modal-panel" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="modalDetailTitle">Blueprint Specification</h2>
+          <span class="card-meta" id="modalDetailDomain" style="display: block; margin-top: 4px;"></span>
+        </div>
+        <button class="modal-close-btn" aria-label="Close dialog">✕</button>
+      </div>
+      <div>
+        <p id="modalDetailSummary" style="margin-bottom: var(--space-3); color: var(--text-primary);"></p>
+        <div style="margin-bottom: var(--space-3);">
+          <span style="font-family: var(--font-family-mono); color: var(--accent-green); display: block; margin-bottom: 4px;">Target Architecture:</span>
+          <code id="modalDetailArchitecture" style="background: var(--bg-surface-elevated); padding: 6px 12px; border-radius: 4px; display: block; font-size: 13px;"></code>
+        </div>
+        <div style="margin-bottom: var(--space-3);">
+          <span style="font-family: var(--font-family-mono); color: var(--text-muted); display: block; margin-bottom: 6px;">Recommended Stack:</span>
+          <div class="badge-group" id="modalDetailStack"></div>
+        </div>
+        <div>
+          <span style="font-family: var(--font-family-mono); color: var(--text-primary); display: block; margin-bottom: 6px;">Milestone Roadmap:</span>
+          <ul id="modalDetailMilestones" style="list-style: none; padding: 0;"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

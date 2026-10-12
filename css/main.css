@@ -1,0 +1,98 @@
+@import url("./tokens.css");
+@import url("./base.css");
+@import url("./components/navbar.css");
+@import url("./components/hero.css");
+@import url("./components/card.css");
+@import url("./components/modal.css");
+@import url("./components/badge.css");
+
+/* Section Layouts */
+.section {
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.section-tag {
+  color: var(--accent-green);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+}
+
+.section-title {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+}
+
+.section-desc {
+  font-size: var(--font-size-md);
+  color: var(--text-muted);
+}
+
+.section-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.search-input {
+  max-width: 320px;
+  width: 100%;
+}
+
+/* State Views: Loading, Error, Empty */
+.state-box {
+  background-color: var(--bg-surface);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.state-box.is-loading .spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-subtle);
+  border-top-color: var(--accent-green);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-6) 0 var(--space-4);
+  background-color: var(--bg-surface);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
