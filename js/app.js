@@ -1,40 +1,43 @@
 import { initNavbar } from "./components/navbar.js";
-import { initTerminalAnimation } from "./components/terminal-anim.js";
+import { initHeroPreview } from "./components/hero-preview.js";
 import { initAuthModal } from "./components/auth-modal.js";
 import { initBlueprintBuilder } from "./components/blueprint-builder.js";
 import { initResourceExplorer } from "./components/resource-explorer.js";
 import { initProjectDirectory } from "./components/project-directory.js";
 import { initBlueprintDetailModal } from "./components/blueprint-detail-modal.js";
+import { initInfoModal } from "./components/info-modal.js";
 
 function bootstrap() {
-  // Initialize modals
   const authModal = initAuthModal("authModal");
   const detailModal = initBlueprintDetailModal("detailModal");
+  const infoModal = initInfoModal("infoModal");
 
-  // Auth trigger handler
   const handleOpenAuth = () => {
     if (authModal) authModal.open();
   };
 
-  // Blueprint inspect handler
+  const handleOpenNotice = (title, message) => {
+    if (infoModal) infoModal.open(title, message);
+  };
+
   const handleInspect = (blueprint) => {
     if (detailModal) detailModal.open(blueprint);
   };
 
-  // Initialize navbar
-  initNavbar(handleOpenAuth);
-
-  // Initialize terminal animation
-  initTerminalAnimation("heroTerminalBody");
-
-  // Initialize interactive blueprint generator
+  initNavbar(handleOpenAuth, handleOpenNotice);
+  initHeroPreview("heroBlueprintPreview");
   initBlueprintBuilder("builderForm", "builderResultBox", handleOpenAuth);
-
-  // Initialize public project directory
   initProjectDirectory("blueprintsGrid", handleInspect);
-
-  // Initialize resource explorer
   initResourceExplorer("resourceSearchInput", "resourceCategories", "resourcesGrid");
+
+  // Wire Teams / Workspace in-progress buttons if present
+  document.querySelectorAll("[data-notice-feature]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const featName = btn.dataset.noticeFeature || "Feature";
+      handleOpenNotice(featName, `${featName} is scheduled for development in the upcoming sprint. Reserve early access today!`);
+    });
+  });
 }
 
 if (document.readyState === "loading") {
@@ -42,4 +45,3 @@ if (document.readyState === "loading") {
 } else {
   bootstrap();
 }
-

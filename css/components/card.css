@@ -1,17 +1,16 @@
 .card {
-  background-color: var(--bg-surface);
+  background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: var(--card-padding);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  transition: border-color var(--transition-micro), transform var(--transition-micro), box-shadow var(--transition-micro);
+  transition: border-color var(--transition-micro), transform var(--transition-micro);
 }
 
 .card:hover {
-  border-color: var(--accent-green);
-  box-shadow: 0 4px 20px var(--accent-green-dim);
+  border-color: var(--border-focus);
   transform: translateY(-2px);
 }
 
@@ -27,9 +26,10 @@
 }
 
 .card-title {
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-md);
   color: var(--text-primary);
+  font-weight: 600;
 }
 
 .card-meta {
@@ -43,7 +43,7 @@
 .card-body {
   color: var(--text-muted);
   font-size: var(--font-size-sm);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .card-footer {

@@ -23,7 +23,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-sans);
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -31,7 +31,7 @@ h1, h2, h3 {
 
 h1 {
   font-size: var(--font-size-lg);
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 h2 {
@@ -50,22 +50,22 @@ p, span, label {
 }
 
 a {
-  color: var(--accent-green);
+  color: var(--text-primary);
   text-decoration: none;
-  transition: color var(--transition-micro), border-color var(--transition-micro);
+  transition: color var(--transition-micro);
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--accent-green);
 }
 
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 2px solid var(--accent-green);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
 button {
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-sm);
   cursor: pointer;
   border: 1px solid transparent;
@@ -87,29 +87,38 @@ button:disabled {
 
 .btn-primary {
   background-color: var(--accent-green);
-  color: var(--bg-canvas);
-  font-weight: 700;
+  color: #060A08;
+  font-weight: 600;
 }
 
 .btn-primary:hover:not(:disabled) {
-  filter: brightness(1.1);
-  box-shadow: 0 0 16px var(--accent-green-glow);
+  filter: brightness(1.08);
+  box-shadow: 0 4px 16px var(--accent-green-glow);
 }
 
 .btn-secondary {
   background-color: var(--bg-surface);
   border-color: var(--border-subtle);
   color: var(--text-primary);
+  font-weight: 500;
 }
 
 .btn-secondary:hover:not(:disabled) {
   border-color: var(--accent-green);
-  background-color: var(--bg-surface-elevated);
+  color: var(--accent-green);
+  background-color: var(--bg-card);
 }
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 var(--space-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
