@@ -12,9 +12,9 @@
 }
 
 .badge-green {
-  background-color: var(--accent-sage-dim);
-  border-color: rgba(164, 214, 173, 0.3);
-  color: var(--accent-sage);
+  background-color: var(--accent-mint-dim);
+  border-color: rgba(98, 230, 174, 0.3);
+  color: var(--accent-mint);
 }
 
 .badge-outline {

@@ -1,13 +1,16 @@
+import { initWaveBackground } from "./components/wave-background.js";
 import { initNavbar } from "./components/navbar.js";
 import { initHeroPreview } from "./components/hero-preview.js";
-import { initAuthModal } from "./components/auth-modal.js";
-import { initBlueprintBuilder } from "./components/blueprint-builder.js";
-import { initResourceExplorer } from "./components/resource-explorer.js";
 import { initProjectDirectory } from "./components/project-directory.js";
+import { initHowItWorks } from "./components/how-it-works.js";
+import { initScrollAnimations } from "./components/scroll-animations.js";
+import { initAuthModal } from "./components/auth-modal.js";
 import { initBlueprintDetailModal } from "./components/blueprint-detail-modal.js";
 import { initInfoModal } from "./components/info-modal.js";
-import { initScrollAnimations } from "./components/scroll-animations.js";
 
+/**
+ * Bootstrap the HackPrep homepage application.
+ */
 function bootstrap() {
   const authModal = initAuthModal("authModal");
   const detailModal = initBlueprintDetailModal("detailModal");
@@ -25,36 +28,57 @@ function bootstrap() {
     if (detailModal) detailModal.open(blueprint);
   };
 
+  // 1. Animated Wave Background
+  initWaveBackground("waveCanvas");
+
+  // 2. Navigation Bar
   initNavbar(handleOpenAuth, handleOpenNotice);
-  initHeroPreview("heroMockupCard");
+
+  // 3. Hero Project Builder Preview
+  initHeroPreview("heroMockupCard", () => {
+    handleOpenNotice(
+      "Project Builder Studio",
+      "This interactive widget previews the HackPrep Project Builder. Select a curated project below or log in to create custom blueprints!"
+    );
+  });
+
+  // 4. Featured Project Ideas Directory
   initProjectDirectory("popularCardsGrid", "projectFilters", handleInspect);
-  initBlueprintBuilder("builderForm", "builderResultBox", handleOpenAuth);
-  initResourceExplorer("resourceSearchInput", "resourceCategories", "resourcesGrid");
+
+  // 5. How It Works Workflow Animation
+  initHowItWorks("how-it-works");
+
+  // 6. Section Scroll Reveals
   initScrollAnimations();
 
-  // "Watch Demo" CTA button
-  const watchDemoBtn = document.getElementById("heroWatchDemoBtn");
-  if (watchDemoBtn) {
-    watchDemoBtn.addEventListener("click", (e) => {
+  // "View All Projects" link
+  const viewAllProjectsLink = document.getElementById("viewAllProjectsLink");
+  if (viewAllProjectsLink) {
+    viewAllProjectsLink.addEventListener("click", (e) => {
       e.preventDefault();
-      handleOpenNotice(
-        "HackPrep Platform Demo",
-        "Welcome to HackPrep! Here is how it works: (1) Discover curated real-world problem statements, (2) Generate a custom architectural blueprint with recommended tech stacks, (3) Access verified free APIs and starter kits, and (4) Form balanced hackathon teams. Try the interactive Project Builder below to get started!"
-      );
+      const filterAllBtn = document.querySelector("#projectFilters .filter-pill");
+      if (filterAllBtn) filterAllBtn.click();
+      const projSec = document.getElementById("projects");
+      if (projSec) projSec.scrollIntoView({ behavior: "smooth" });
     });
   }
 
-  // Feature notice triggers for uncompleted sprint features
-  document.querySelectorAll("[data-notice-feature]").forEach(btn => {
-    btn.addEventListener("click", (e) => {
+  // Footer explore placeholders
+  const footerResources = document.getElementById("footerResourcesLink");
+  if (footerResources) {
+    footerResources.addEventListener("click", (e) => {
       e.preventDefault();
-      const featName = btn.dataset.noticeFeature || "Feature";
-      handleOpenNotice(
-        featName,
-        `${featName} is scheduled for development in the upcoming sprint. Reserve early access today!`
-      );
+      handleOpenNotice("Curated Resources", "The Resource directory is scheduled for the next release. Explore the project blueprints above!");
     });
-  });
+  }
+
+  const footerTeams = document.getElementById("footerTeamsLink");
+  if (footerTeams) {
+    footerTeams.addEventListener("click", (e) => {
+      e.preventDefault();
+      handleOpenNotice("Team Matchmaking", "Team collaboration tools are scheduled for the next release. Stay tuned!");
+    });
+  }
 }
 
 if (document.readyState === "loading") {

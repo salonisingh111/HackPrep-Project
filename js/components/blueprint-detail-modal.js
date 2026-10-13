@@ -23,7 +23,7 @@ export function initBlueprintDetailModal(modalId) {
 
     if (milestonesList) {
       milestonesList.innerHTML = blueprint.milestones.map(m => `
-        <li style="font-family: var(--font-family-mono); font-size: 13px; color: var(--text-muted); padding-left: 10px; border-left: 2px solid var(--accent-green); margin-bottom: 6px;">
+        <li style="font-family: var(--font-family-mono); font-size: 13px; color: var(--text-muted); padding-left: 10px; border-left: 2px solid var(--accent-mint); margin-bottom: 6px;">
           ${m}
         </li>
       `).join("");

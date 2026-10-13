@@ -1,17 +1,13 @@
 export function initScrollAnimations() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.querySelectorAll(".reveal-on-scroll").forEach(el => {
-      el.classList.add("is-visible");
-    });
     return;
   }
 
   if (!("IntersectionObserver" in window)) {
-    document.querySelectorAll(".reveal-on-scroll").forEach(el => {
-      el.classList.add("is-visible");
-    });
     return;
   }
+
+  document.documentElement.classList.add("js-reveal-active");
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -21,8 +17,8 @@ export function initScrollAnimations() {
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: "0px 0px -40px 0px"
+    threshold: 0.05,
+    rootMargin: "0px 0px 80px 0px"
   });
 
   document.querySelectorAll(".reveal-on-scroll").forEach(el => {

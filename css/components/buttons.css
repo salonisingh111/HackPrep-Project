@@ -1,10 +1,12 @@
 /* HackPrep Button System */
-button {
+button,
+.btn-primary,
+.btn-secondary {
   font-family: var(--font-family-sans);
   font-size: var(--font-size-sm);
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   min-height: var(--min-touch-target);
   min-width: var(--min-touch-target);
   padding: 0 var(--space-3);
@@ -12,6 +14,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: var(--space-1);
+  text-decoration: none;
   transition: all var(--transition-micro);
 }
 
@@ -20,20 +23,19 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Primary CTA - Soft Sage / Emerald */
+/* Primary CTA - Soft Mint */
 .btn-primary {
-  background-color: var(--accent-sage);
-  color: #07100B;
+  background-color: var(--accent-mint);
+  color: #050B09;
   font-weight: 600;
-  border-radius: var(--radius-full);
-  padding: 0 var(--space-3);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #B5E4BD;
+  background-color: var(--accent-secondary);
+  color: #050B09;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px var(--accent-sage-glow);
+  box-shadow: 0 4px 14px var(--accent-mint-glow);
 }
 
 .btn-primary:active:not(:disabled) {
@@ -46,8 +48,6 @@ button:disabled {
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   font-weight: 500;
-  border-radius: var(--radius-full);
-  padding: 0 var(--space-3);
 }
 
 .btn-secondary:hover:not(:disabled) {
@@ -60,12 +60,12 @@ button:disabled {
   background-color: var(--bg-card);
 }
 
-/* Circle Icon Button */
+/* Circle Icon Button (Min 44x44px touch target) */
 .btn-circle {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
@@ -77,7 +77,7 @@ button:disabled {
 }
 
 .btn-circle:hover {
-  border-color: var(--accent-sage);
-  color: var(--accent-sage);
+  border-color: var(--accent-mint);
+  color: var(--accent-mint);
   background-color: var(--bg-card-hover);
 }

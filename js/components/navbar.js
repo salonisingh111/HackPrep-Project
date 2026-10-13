@@ -1,66 +1,87 @@
 import { state } from "../state.js";
 
+/**
+ * Polished navbar controller managing scroll opacity, responsive drawer, and auth states.
+ */
 export function initNavbar(onOpenAuth, onOpenNotice) {
+  const navElement = document.querySelector(".navbar");
   const container = document.getElementById("navbarAuthAction");
   const navList = document.getElementById("navbarList");
   const toggleBtn = document.getElementById("navbarToggleBtn");
   const searchBtn = document.getElementById("navbarSearchBtn");
 
+  // Sticky scroll opacity enhancement
+  function handleScroll() {
+    if (!navElement) return;
+    if (window.scrollY > 24) {
+      navElement.classList.add("is-scrolled");
+    } else {
+      navElement.classList.remove("is-scrolled");
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+
   // Mobile drawer toggle
   if (toggleBtn && navList) {
     toggleBtn.addEventListener("click", () => {
-      navList.classList.toggle("is-open");
+      const isExpanded = navList.classList.toggle("is-open");
+      toggleBtn.setAttribute("aria-expanded", String(isExpanded));
     });
 
     navList.querySelectorAll(".nav-link").forEach(link => {
       link.addEventListener("click", () => {
         navList.classList.remove("is-open");
+        if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
         navList.querySelectorAll(".nav-link").forEach(l => l.classList.remove("is-active"));
         link.classList.add("is-active");
       });
     });
   }
 
-  // Quick search button
+  // Search button action
   if (searchBtn) {
     searchBtn.addEventListener("click", () => {
-      const searchInput = document.getElementById("resourceSearchInput");
-      if (searchInput) {
-        searchInput.scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => searchInput.focus(), 300);
+      const projectsSection = document.getElementById("projects");
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: "smooth" });
       }
+  // Mobile login action
+  const mobileLogin = document.getElementById("navMobileLogin");
+  if (mobileLogin) {
+    mobileLogin.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (typeof onOpenAuth === "function") onOpenAuth();
     });
   }
 
-  // Handle in-progress navigation items
-  const teamsLink = document.getElementById("navTeams");
-  if (teamsLink) {
-    teamsLink.addEventListener("click", (e) => {
-      if (typeof onOpenNotice === "function") {
-        e.preventDefault();
-        onOpenNotice("Team Hub", "Team matchmaking and hacker roster formation is scheduled for the upcoming sprint. Stay tuned for early access!");
-      }
-    });
-  }
+  // Placeholder hooks for standalone pages
+  const placeholderRoutes = [
+    { id: "navResources", name: "Curated Resources", message: "Resource directory is scheduled for the upcoming sprint. Discover hackathon project blueprints below!" },
+    { id: "navTeams", name: "Team Matchmaking", message: "Team collaboration roster is scheduled for the upcoming sprint. Stay tuned!" }
+  ];
 
-  const pricingLink = document.getElementById("navPricing");
-  if (pricingLink) {
-    pricingLink.addEventListener("click", (e) => {
-      if (typeof onOpenNotice === "function") {
-        e.preventDefault();
-        onOpenNotice("Pricing Plans", "HackPrep is currently 100% free for educational and hackathon participants!");
-      }
-    });
-  }
+  placeholderRoutes.forEach(({ id, name, message }) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("click", (e) => {
+        if (typeof onOpenNotice === "function") {
+          e.preventDefault();
+          onOpenNotice(name, message);
+        }
+      });
+    }
+  });
 
-  function render() {
+  function renderAuth() {
     if (!container) return;
 
     if (state.isAuthenticated && state.currentUser) {
       container.innerHTML = `
         <div style="display: flex; align-items: center; gap: 8px;">
           <span style="font-size: 13px; font-weight: 500; color: var(--text-primary);">@${state.currentUser.username}</span>
-          <button id="navLogoutBtn" class="btn-secondary" style="min-height: 36px; padding: 0 12px; font-size: 13px;">Sign Out</button>
+          <button id="navLogoutBtn" class="btn-secondary" style="min-height: 40px; padding: 0 14px; font-size: 13px;">Sign Out</button>
         </div>
       `;
       const logoutBtn = document.getElementById("navLogoutBtn");
@@ -69,9 +90,9 @@ export function initNavbar(onOpenAuth, onOpenNotice) {
       }
     } else {
       container.innerHTML = `
-        <button id="navLoginBtn" class="btn-nav-login" style="cursor: pointer;">Log In</button>
+        <button id="navLoginBtn" class="btn-nav-login">Log In</button>
         <button id="navGetStartedBtn" class="btn-primary" style="min-height: 40px; padding: 0 18px;">
-          Get Started →
+          Get Started
         </button>
       `;
       const loginBtn = document.getElementById("navLoginBtn");
@@ -90,6 +111,6 @@ export function initNavbar(onOpenAuth, onOpenNotice) {
     }
   }
 
-  state.subscribe(render);
-  render();
+  state.subscribe(renderAuth);
+  renderAuth();
 }
