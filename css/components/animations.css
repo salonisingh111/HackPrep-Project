@@ -1,0 +1,105 @@
+/* Elegant, Restrained Animations for HackPrep */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Staggered Hero Entrances */
+.animate-hero-eyebrow {
+  animation: fadeSlideUp 350ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: 50ms;
+}
+
+.animate-hero-title {
+  animation: fadeSlideUp 400ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: 120ms;
+}
+
+.animate-hero-desc {
+  animation: fadeSlideUp 400ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: 200ms;
+}
+
+.animate-hero-cta {
+  animation: fadeSlideUp 400ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: 280ms;
+}
+
+.animate-hero-stats {
+  animation: fadeSlideUp 450ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: 360ms;
+}
+
+.animate-hero-preview {
+  animation: fadeSlideUp 450ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: 220ms;
+}
+
+/* Scroll-triggered Reveal */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Interactive Card Transitions */
+.interactive-card {
+  transition: transform var(--transition-micro),
+              border-color var(--transition-micro),
+              background-color var(--transition-micro),
+              box-shadow var(--transition-micro);
+}
+
+.interactive-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-highlight);
+  background-color: var(--bg-card-hover);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-eyebrow,
+  .animate-hero-title,
+  .animate-hero-desc,
+  .animate-hero-cta,
+  .animate-hero-stats,
+  .animate-hero-preview,
+  .reveal-on-scroll {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

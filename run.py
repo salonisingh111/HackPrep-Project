@@ -3,6 +3,10 @@ import socketserver
 import webbrowser
 import os
 import sys
+import mimetypes
+
+mimetypes.add_type("text/javascript", ".js")
+mimetypes.add_type("text/css", ".css")
 
 DEFAULT_PORT = 8000
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -22,7 +26,7 @@ def start_server():
     for attempt in range(10):
         try:
             with socketserver.TCPServer(("", port), ProjectHandler) as httpd:
-                url = f"http://localhost:{port}/Home/home.html"
+                url = f"http://localhost:{port}/index.html"
                 print("=" * 50)
                 print(" HackPrep Local Development Server")
                 print("=" * 50)

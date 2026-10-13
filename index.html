@@ -1,14 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=Home/home.html">
-    <title>HackPrep Redirect</title>
-    <script>
-        window.location.href = "Home/home.html";
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HackPrep — From an idea to a winning project</title>
+  <meta name="description" content="HackPrep helps you discover hackathon ideas, create structured plans, find the right teammates, and access curated resources — all in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <p>Redirecting to <a href="Home/home.html">HackPrep Home</a>...</p>
+  <!-- Header & Navigation -->
+  <header>
+    <nav class="navbar" aria-label="Primary Navigation">
+      <div class="container navbar-container">
+        <a href="#hero" class="navbar-brand" id="brandLogo">
+          <span class="brand-sparkle">✦</span>
+          <span>HackPrep</span>
+        </a>
+
+        <ul class="navbar-nav" id="navbarList">
+          <li><a href="#hero" class="nav-link is-active" id="navHome">Home</a></li>
+          <li><a href="#projects" class="nav-link" id="navProjects">Explore Projects</a></li>
+          <li><a href="#resources" class="nav-link" id="navResources">Resources</a></li>
+          <li><a href="#teams" class="nav-link" id="navTeams">Teams</a></li>
+          <li><a href="#how-it-works" class="nav-link" id="navHowItWorks">How It Works</a></li>
+          <li><a href="#pricing" class="nav-link" id="navPricing">Pricing</a></li>
+        </ul>
+
+        <div class="navbar-actions">
+          <button class="navbar-search-btn" id="navbarSearchBtn" aria-label="Search resources and projects">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <div id="navbarAuthAction">
+            <!-- Dynamic Login & Get Started Buttons populated by navbar.js -->
+          </div>
+          <button class="navbar-toggle" id="navbarToggleBtn" aria-label="Toggle Navigation Menu">
+            ☰
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero-glow-bg"></div>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-eyebrow-pill animate-hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            <span>BUILD. LEARN. COLLABORATE.</span>
+          </div>
+
+          <h1 class="hero-heading animate-hero-title">
+            From an idea<br>to a winning project.
+          </h1>
+
+          <p class="hero-description animate-hero-desc">
+            HackPrep helps you discover hackathon ideas, create structured plans, find the right teammates, and access curated resources — all in one place.
+          </p>
+
+          <div class="hero-cta-group animate-hero-cta">
+            <a href="#projects" class="btn-primary" id="heroExploreBtn">Explore Projects →</a>
+            <button class="btn-secondary" id="heroWatchDemoBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Watch Demo
+            </button>
+          </div>
+
+          <!-- Hero Metrics / Stats Row -->
+          <div class="hero-stats-row animate-hero-stats">
+            <div class="hero-stat-item">
+              <span class="hero-stat-value">10K+</span>
+              <span class="hero-stat-label">Student Builders</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-value">2.5K+</span>
+              <span class="hero-stat-label">Project Ideas</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-value">500+</span>
+              <span class="hero-stat-label">Active Teams</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-value">50+</span>
+              <span class="hero-stat-label">Curated Resources</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Realistic Product Blueprint Preview Mockup -->
+        <div class="mockup-wrapper animate-hero-preview">
+          <!-- Cursive script floating note -->
+          <div class="mockup-handwritten-note">
+            Ideas<br>Plans<br>Teams<br>Real Projects
+          </div>
+
+          <!-- Top-Right Floating Pill Badge -->
+          <div class="mockup-floating-badge badge-top-right">
+            <span style="color: var(--accent-sage);">✦</span>
+            <span>Get AI-powered guidance for your ideas.</span>
+          </div>
+
+          <!-- Main Blueprint Studio Window -->
+          <div class="mockup-window" id="heroMockupCard">
+            <!-- Mini Sidebar -->
+            <aside class="mockup-sidebar" aria-label="Mockup navigation">
+              <div class="mockup-brand">
+                <span style="color: var(--accent-sage);">✦</span>
+                <span>HackPrep</span>
+              </div>
+              <ul class="mockup-nav">
+                <li class="mockup-nav-item is-active">
+                  <span>▣</span> Overview
+                </li>
+                <li class="mockup-nav-item">
+                  <span>✎</span> Project Builder
+                </li>
+                <li class="mockup-nav-item">
+                  <span>◧</span> My Projects
+                </li>
+                <li class="mockup-nav-item">
+                  <span>◫</span> Resources
+                </li>
+                <li class="mockup-nav-item">
+                  <span>👥</span> Teams
+                </li>
+                <li class="mockup-nav-item">
+                  <span>⊞</span> Dashboard
+                </li>
+              </ul>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="mockup-content">
+              <h3 class="mockup-header-title">Project Blueprint</h3>
+
+              <div class="mockup-stepper">
+                <span class="step-indicator active">
+                  <span class="step-circle">1</span> Idea
+                </span>
+                <span style="color: var(--border-subtle);">──</span>
+                <span class="step-indicator">
+                  <span class="step-circle">2</span> Analysis
+                </span>
+                <span style="color: var(--border-subtle);">──</span>
+                <span class="step-indicator">
+                  <span class="step-circle">3</span> Blueprint
+                </span>
+              </div>
+
+              <div class="mockup-body-grid">
+                <!-- Form Inputs -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <div class="mockup-field-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span class="mockup-label">Your Idea</span>
+                      <span id="heroMockupCounter" style="font-size: 10px; color: var(--text-dim);">0/500</span>
+                    </div>
+                    <textarea class="mockup-textarea" id="heroMockupTextarea" placeholder="Describe your hackathon idea..."></textarea>
+                  </div>
+
+                  <div class="mockup-field-group">
+                    <span class="mockup-label">Target Domain</span>
+                    <select class="mockup-select" aria-label="Target domain selection">
+                      <option>Select domain ⌵</option>
+                      <option>Environment & Climate</option>
+                      <option>Education & Learning</option>
+                      <option>Healthcare & Telemedicine</option>
+                      <option>FinTech & Analytics</option>
+                    </select>
+                  </div>
+
+                  <div class="mockup-field-group">
+                    <span class="mockup-label">Difficulty Level</span>
+                    <div class="mockup-pills">
+                      <button class="mockup-pill-btn" type="button">Beginner</button>
+                      <button class="mockup-pill-btn is-active" type="button">Intermediate</button>
+                      <button class="mockup-pill-btn" type="button">Advanced</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- AI Analysis Card -->
+                <div class="mockup-ai-card">
+                  <div>
+                    <span class="mockup-ai-header">AI Analysis</span>
+                    <ul class="mockup-ai-list" style="margin-top: 8px;">
+                      <li class="mockup-ai-item">
+                        <span class="dot">●</span> Feasibility Analysis
+                      </li>
+                      <li class="mockup-ai-item">
+                        <span class="dot">●</span> Tech Stack Recommendation
+                      </li>
+                      <li class="mockup-ai-item">
+                        <span class="dot">●</span> Potential Impact
+                      </li>
+                      <li class="mockup-ai-item">
+                        <span class="dot">●</span> Time Estimation
+                      </li>
+                    </ul>
+                  </div>
+
+                  <button class="mockup-gen-btn" id="heroMockupGenBtn" type="button">
+                    Generate Blueprint →
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom-Right Floating Pill Badge -->
+          <div class="mockup-floating-badge badge-bottom-right">
+            <span>📄</span>
+            <span>Turn ideas into structured blueprints.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Project Ideas Section -->
+    <section id="projects" class="section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header-row">
+          <div class="section-header">
+            <span class="section-tag">
+              <span style="color: var(--accent-sage);">✦</span> EXPLORE
+            </span>
+            <h2 class="section-title">Popular Project Ideas</h2>
+            <p class="section-desc">Browse real-world inspired project concepts across different domains.</p>
+          </div>
+          <a href="#builder" class="section-action-link" id="viewAllProjectsBtn">
+            View All Projects →
+          </a>
+        </div>
+
+        <!-- Domain Filter Pills -->
+        <div class="project-filter-row" id="projectFilters" role="tablist" aria-label="Project domains">
+          <!-- Populated dynamically by project-directory.js -->
+        </div>
+
+        <!-- 4-Card Responsive Grid -->
+        <div class="popular-cards-grid" id="popularCardsGrid" aria-live="polite">
+          <!-- Populated dynamically with GreenTrack, EduTrack, MediConnect, FinMate -->
+        </div>
+      </div>
+    </section>
+
+    <!-- How HackPrep Works Section -->
+    <section id="how-it-works" class="section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <span style="color: var(--accent-sage);">✦</span> HOW IT WORKS
+          </span>
+          <h2 class="section-title">A simple path to hackathon success.</h2>
+          <p class="section-desc">Go from an idea to a ready-to-build project with clear guidance and the right resources.</p>
+        </div>
+
+        <div class="workflow-timeline">
+          <!-- Step 1: Discover -->
+          <div class="workflow-step">
+            <div class="workflow-icon-badge" aria-label="Step 1 Discover">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                <path d="M9 18h6"/>
+                <path d="M10 22h4"/>
+              </svg>
+            </div>
+            <h3 class="workflow-step-title">Discover</h3>
+            <p class="workflow-step-desc">Explore project ideas or bring your own concept.</p>
+          </div>
+
+          <!-- Step 2: Plan -->
+          <div class="workflow-step">
+            <div class="workflow-icon-badge" aria-label="Step 2 Plan">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3 class="workflow-step-title">Plan</h3>
+            <p class="workflow-step-desc">Get AI-powered analysis and a structured blueprint.</p>
+          </div>
+
+          <!-- Step 3: Collaborate -->
+          <div class="workflow-step">
+            <div class="workflow-icon-badge" aria-label="Step 3 Collaborate">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="workflow-step-title">Collaborate</h3>
+            <p class="workflow-step-desc">Find teammates and access curated learning resources.</p>
+          </div>
+
+          <!-- Step 4: Build & Track -->
+          <div class="workflow-step">
+            <div class="workflow-icon-badge" aria-label="Step 4 Build and Track">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+              </svg>
+            </div>
+            <h3 class="workflow-step-title">Build &amp; Track</h3>
+            <p class="workflow-step-desc">Organize tasks, set milestones and bring your idea to life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Blueprint Builder Section -->
+    <section id="builder" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">04 / INTERACTIVE STUDIO</span>
+          <h2 class="section-title">Build Your Project Blueprint</h2>
+          <p class="section-desc">Input your concept below to compile a custom technical blueprint and milestones.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-4);">
+          <!-- Input Form -->
+          <form id="builderForm" class="card">
+            <div class="form-group">
+              <label for="builderIdea" class="form-label">Project Concept / Problem Statement</label>
+              <textarea id="builderIdea" class="form-textarea" placeholder="e.g. AI-driven disaster triage platform dispatching autonomous drone reconnaissance..." required></textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2);">
+              <div class="form-group">
+                <label for="builderDomain" class="form-label">Domain</label>
+                <select id="builderDomain" class="form-select">
+                  <option value="AI &amp; Web">AI &amp; Web</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="FinTech">FinTech</option>
+                  <option value="Climate">Climate</option>
+                  <option value="DevTools">DevTools</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="builderDuration" class="form-label">Sprint Duration</label>
+                <select id="builderDuration" class="form-select">
+                  <option value="24 Hours">24 Hours</option>
+                  <option value="36 Hours" selected>36 Hours</option>
+                  <option value="48 Hours">48 Hours</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="builderSubmitBtn" style="margin-top: var(--space-1);">
+              Generate Project Blueprint ⚡
+            </button>
+          </form>
+
+          <!-- Result Container -->
+          <div id="builderResultBox">
+            <div class="state-box">
+              <span style="font-family: var(--font-family-mono); color: var(--accent-green); font-size: 16px;">[READY TO GENERATE]</span>
+              <p>Enter your hackathon concept above to generate an actionable technical blueprint with architecture patterns and milestones.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer Resource Hub Preview -->
+    <section id="resources" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">05 / RESOURCES</span>
+          <h2 class="section-title">Developer Resource Hub</h2>
+          <p class="section-desc">Searchable collection of free-tier APIs, frameworks, and developer tools for hackathon teams.</p>
+        </div>
+
+        <div class="section-controls">
+          <div class="filter-group" id="resourceCategories">
+            <!-- Filter buttons populated dynamically -->
+          </div>
+          <input type="search" id="resourceSearchInput" class="form-input search-input" placeholder="Search APIs, datasets, tools...">
+        </div>
+
+        <div class="card-grid" id="resourcesGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section id="cta" class="section">
+      <div class="container">
+        <div class="cta-banner">
+          <span class="badge badge-green">START YOUR JOURNEY</span>
+          <h2>Ready to build for your next hackathon?</h2>
+          <p>Join developers planning winning projects, discovering battle-tested architectures, and shipping with confidence.</p>
+          <div class="hero-cta-group">
+            <a href="#builder" class="btn-primary">Build Your Idea Now →</a>
+            <a href="#projects" class="btn-secondary">Explore Project Listings</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#hero" class="navbar-brand" style="margin-bottom: 12px;">
+            <span class="brand-sparkle">✦</span>
+            <span>HackPrep</span>
+          </a>
+          <p style="max-width: 280px; line-height: 1.6;">
+            The unified platform for hackathon ideation, technical architecture planning, and developer collaboration.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Platform</h3>
+          <ul class="footer-links">
+            <li><a href="#projects">Explore Projects</a></li>
+            <li><a href="#builder">Blueprint Studio</a></li>
+            <li><a href="#resources">Resource Hub</a></li>
+            <li><a href="#teams" data-notice-feature="Team Hub">Team Matching</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#resources">Free Tier APIs</a></li>
+            <li><a href="#resources">Starter Kits</a></li>
+            <li><a href="#how-it-works">Sprint Workflow</a></li>
+            <li><a href="https://github.com/salonisingh111/HackPrep-Project" target="_blank" rel="noopener noreferrer">GitHub Repo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>About</h3>
+          <ul class="footer-links">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="https://github.com/salonisingh111/HackPrep-Project" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+            <li><a href="#hero">Back to Top ↑</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 HackPrep Project. Open educational platform for hackathons.</p>
+        <p style="color: var(--text-muted); font-size: 13px;">Built for hackers, by hackers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Developer Auth Modal -->
+  <div class="modal-backdrop" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h2 class="modal-title" id="authTitle">Developer Authentication</h2>
+        <button class="modal-close-btn" aria-label="Close dialog">✕</button>
+      </div>
+      <form id="authForm">
+        <div class="form-group">
+          <label for="authUsername" class="form-label">Developer Handle / Username</label>
+          <input type="text" id="authUsername" class="form-input" placeholder="e.g. alex_dev" required>
+        </div>
+        <div class="form-feedback" id="authFeedback"></div>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: var(--space-2);">
+          Connect Session
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Blueprint Inspection Modal -->
+  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalDetailTitle">
+    <div class="modal-panel" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="modalDetailTitle">Blueprint Specification</h2>
+          <span class="card-meta" id="modalDetailDomain" style="display: block; margin-top: 4px;"></span>
+        </div>
+        <button class="modal-close-btn" aria-label="Close dialog">✕</button>
+      </div>
+      <div>
+        <p id="modalDetailSummary" style="margin-bottom: var(--space-3); color: var(--text-primary);"></p>
+        <div style="margin-bottom: var(--space-3);">
+          <span style="font-family: var(--font-family-mono); color: var(--accent-green); display: block; margin-bottom: 4px; font-size: 13px;">TARGET ARCHITECTURE</span>
+          <code id="modalDetailArchitecture" style="background: var(--bg-surface); padding: 8px 12px; border-radius: 4px; display: block; font-size: 13px; border: 1px solid var(--border-subtle);"></code>
+        </div>
+        <div style="margin-bottom: var(--space-3);">
+          <span style="font-family: var(--font-family-mono); color: var(--text-muted); display: block; margin-bottom: 6px; font-size: 13px;">RECOMMENDED STACK</span>
+          <div class="badge-group" id="modalDetailStack"></div>
+        </div>
+        <div>
+          <span style="font-family: var(--font-family-mono); color: var(--text-primary); display: block; margin-bottom: 6px; font-size: 13px;">MILESTONE ROADMAP</span>
+          <ul id="modalDetailMilestones" style="list-style: none; padding: 0;"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Notice Modal -->
+  <div class="modal-backdrop" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h2 class="modal-title" id="infoModalTitle">Feature Update</h2>
+        <button class="modal-close-btn" aria-label="Close dialog">✕</button>
+      </div>
+      <p id="infoModalMessage" style="color: var(--text-muted); line-height: 1.6; margin-bottom: var(--space-3);"></p>
+      <button class="btn-primary" id="infoModalDismissBtn" style="width: 100%;">
+        Got it
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
